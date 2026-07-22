@@ -1,0 +1,21 @@
+product_id,product_name,category,price
+1,Laptop,Electronics,55000
+2,Smartphone,Electronics,25000
+3,Headphones,Electronics,3000
+4,Keyboard,Electronics,1500
+5,Mouse,Electronics,900
+6,Monitor,Electronics,12000
+7,Printer,Electronics,8000
+8,Tablet,Electronics,18000
+9,Camera,Electronics,45000
+10,Smart Watch,Electronics,6000
+11,Shirt,Fashion,1200
+12,Jeans,Fashion,1800
+13,Shoes,Fashion,3200
+14,Jacket,Fashion,3500
+15,Cap,Fashion,500
+16,Mixer,Home,2500
+17,Microwave,Home,9500
+18,Chair,Home,2200
+19,Table,Home,4500
+20,Fan,Home,2800
