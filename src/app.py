@@ -1,6 +1,6 @@
 import streamlit as st
 
-from src.services.query_executor import execute_query
+from services.query_executor import ask_database
 
 st.set_page_config(
     page_title="AI SQL Data Analyst",
@@ -16,26 +16,23 @@ st.write(
 
 question = st.text_input(
     "Enter your question",
-    placeholder="Example: Show top 5 products",
+    placeholder="Example: Show top 5 products by revenue",
 )
 
 if st.button("Ask AI"):
 
-    # Temporary SQL (LLM will generate this later)
-    sql_query = """
-    SELECT
-        product_name,
-        category,
-        price
-    FROM products
-    LIMIT 10;
-    """
+    if not question.strip():
+        st.warning("Please enter a question.")
+        st.stop()
 
-    st.subheader("Generated SQL")
+    try:
+        sql, df = ask_database(question)
 
-    st.code(sql_query, language="sql")
+        st.subheader("Generated SQL")
+        st.code(sql, language="sql")
 
-    df = execute_query(sql_query)
-    st.subheader("Results")
+        st.subheader("Results")
+        st.dataframe(df, use_container_width=True)
 
-    st.dataframe(df, use_container_width=True)
+    except Exception as e:
+        st.error(str(e))
